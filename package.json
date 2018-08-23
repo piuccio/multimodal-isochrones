@@ -1,0 +1,28 @@
+{
+  "name": "multimodal-isochrones",
+  "version": "0.0.0",
+  "description": "Compute lines of equal travel times (isochrones) in a multimodal transport graph",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore --ignore-pattern flow-typed .",
+    "test": "jest --coverage",
+    "test:watch": "jest --watchAll",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/piuccio/multimodal-isochrones"
+  },
+  "keywords": [
+    "isochrone"
+  ],
+  "author": "Fabio Crisci",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "jest-cli": "^23.5.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
