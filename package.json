@@ -10,8 +10,8 @@
     "posttest": "npm run lint"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/piuccio/multimodal-isochrones"
+    "type": "git",
+    "url": "https://github.com/piuccio/multimodal-isochrones"
   },
   "keywords": [
     "isochrone"
@@ -19,10 +19,15 @@
   "author": "Fabio Crisci",
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^8.2.6",
     "eslint": "^5.4.0",
+    "eslint-plugin-flowtype": "^2.50.0",
     "jest-cli": "^23.5.0"
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "cytoscape": "^3.2.16"
   }
 }
