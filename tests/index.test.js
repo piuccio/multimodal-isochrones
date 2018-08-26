@@ -27,4 +27,36 @@ describe('single line', () => {
       expect(actual.find((_) => _.node === result.node)).toEqual(result);
     });
   });
+
+  it('manages nodes with multiple lines on the origin', () => {
+    const graph = iso()
+      .addNode('root')
+      .addNode('a2')
+      .addNode('a3')
+      .addNode('a4')
+      .addEdge({ from: 'root', to: 'a2', time: 2, line: 'a' })
+      .addEdge({ from: 'a2', to: 'a3', time: 3, line: 'a' })
+      .addEdge({ from: 'a3', to: 'a4', time: 2, line: 'a' })
+      .addNode('b2')
+      .addNode('b3')
+      .addNode('b4')
+      .addEdge({ from: 'root', to: 'b2', time: 3, line: 'b' })
+      .addEdge({ from: 'b2', to: 'b3', time: 2, line: 'b' })
+      .addEdge({ from: 'b3', to: 'b4', time: 4, line: 'b' })
+      ;
+    const expected = [
+      { node: 'a2', paths: [{ from: 'root', lines: ['a'], time: 2 }] },
+      { node: 'a3', paths: [{ from: 'root', lines: ['a'], time: 5 }] },
+      { node: 'a4', paths: [{ from: 'root', lines: ['a'], time: 7 }] },
+      { node: 'b2', paths: [{ from: 'root', lines: ['b'], time: 3 }] },
+      { node: 'b3', paths: [{ from: 'root', lines: ['b'], time: 5 }] },
+      { node: 'b4', paths: [{ from: 'root', lines: ['b'], time: 9 }] },
+    ];
+    const actual = graph.from('root').get();
+    expect(actual).toHaveLength(expected.length);
+    // I don't care much about the order of results
+    expected.forEach((result) => {
+      expect(actual.find((_) => _.node === result.node)).toEqual(result);
+    });
+  });
 });
