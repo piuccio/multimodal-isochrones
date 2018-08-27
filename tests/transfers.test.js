@@ -43,4 +43,28 @@ describe('transfer lines', () => {
     const actual = graph.from('a1').get();
     compare(actual, expected);
   });
+
+  it('handles lines with hops', () => {
+    const graph = iso()
+      .addNode('node1')
+      .addNode('node2')
+      .addNode('node3')
+      .addNode('node4')
+      .addNode('node5')
+      .addEdge({ from: 'node1', to: 'node2', time: 4, line: 'slow' })
+      .addEdge({ from: 'node2', to: 'node3', time: 4, line: 'slow' })
+      .addEdge({ from: 'node3', to: 'node4', time: 4, line: 'slow' })
+      .addEdge({ from: 'node4', to: 'node5', time: 4, line: 'slow' })
+      // the fast line skips some stations
+      .addEdge({ from: 'node2', to: 'node4', time: 6, line: 'fast' })
+    ;
+    const expected = [
+      { node: 'node2', paths: [{ from: 'node1', lines: ['slow'], time: 4 }] },
+      { node: 'node3', paths: [{ from: 'node1', lines: ['slow'], time: 8 }] },
+      { node: 'node4', paths: [{ from: 'node1', lines: ['slow', 'fast'], time: 10 }] },
+      { node: 'node5', paths: [{ from: 'node1', lines: ['slow', 'fast', 'slow'], time: 14 }] },
+    ]
+    const actual = graph.from('node1').get();
+    compare(actual, expected);
+  });
 });
