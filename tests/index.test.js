@@ -1,4 +1,5 @@
 const iso = require('../index');
+const { compare } = require('./assert');
 
 describe('single line', () => {
   it('computes the travel distance on a single line', () => {
@@ -21,11 +22,7 @@ describe('single line', () => {
       { node: '5', paths: [{ from: '2', lines: ['l1'], time: 6 }] },
     ];
     const actual = graph.from('2').get();
-    expect(actual).toHaveLength(expected.length);
-    // I don't care much about the order of results
-    expected.forEach((result) => {
-      expect(actual.find((_) => _.node === result.node)).toEqual(result);
-    });
+    compare(actual, expected);
   });
 
   it('manages nodes with multiple lines on the origin', () => {
@@ -53,10 +50,6 @@ describe('single line', () => {
       { node: 'b4', paths: [{ from: 'root', lines: ['b'], time: 9 }] },
     ];
     const actual = graph.from('root').get();
-    expect(actual).toHaveLength(expected.length);
-    // I don't care much about the order of results
-    expected.forEach((result) => {
-      expect(actual.find((_) => _.node === result.node)).toEqual(result);
-    });
+    compare(actual, expected);
   });
 });

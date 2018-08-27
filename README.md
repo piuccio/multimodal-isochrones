@@ -21,4 +21,47 @@ An `edge` is a direct connection between two nodes (undirected). It's represente
 * `to` the destination node
 * `line` the line identifier
 * `time` the cost value, the algorithm will try to minimize it
-  
+
+
+
+## Populate the graph
+
+```js
+const isochrones = require('multimodal-isochrones');
+
+/* Generate a graph with two nodes connected by an edge on line1
+ * that takes 5 minutes to cross
+ */
+const graph = isochrones()
+  .addNode('node1')
+  .addNode('node2')
+  .addEdge({ from: 'node1', to: 'node2', line: 'line1', time: 5 });
+```
+
+You can chain any number of `addNode` and `addEdge`, in any order to build your graph, the only constraint is that when creating an edge both nodes must be already added.
+
+
+## Query
+
+In order to get a list of nodes you need a query object, that can be constructed calling
+
+```js
+const query = graph.from('node1');
+
+const nodes = query.get();
+```
+
+`.get()` returns all the nodes that match the constraints defined by the query object. The result is an array of objects like
+
+```js
+{
+  node: 'node2', // the target node
+  paths: [ // a list of paths the go from a source node to the target
+    {
+      from: 'node1', // the source node
+      lines: ['line1'], // the list of lines traversed
+      time: 5, // total time from source to target
+    }
+  ],
+}
+```
