@@ -65,3 +65,16 @@ const nodes = query.get();
   ],
 }
 ```
+
+
+### Max travel time
+
+Limit the results by the total travel time calling
+
+```js
+const query = graph.from('node1');
+
+const nodes = query.maxTime(30).get();
+```
+
+This will return all nodes reachable in 30 minutes (assuming you count time in minutes) from `node1`.

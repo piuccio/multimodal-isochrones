@@ -8,7 +8,11 @@ interface GraphInterface {
 }
 
 interface QueryInterface {
-  get(): Array<ReachableNode>
+  // Additional filtering
+  maxTime(time: number): QueryInterface;
+
+  // Getters
+  get(): Array<ReachableNode>;
 }
 
 declare type Edge = {
