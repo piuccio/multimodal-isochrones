@@ -10,6 +10,7 @@ interface GraphInterface {
 interface QueryInterface {
   // Additional filtering
   maxTime(time: number): QueryInterface;
+  maxLines(count: number): QueryInterface;
 
   // Getters
   get(): Array<ReachableNode>;

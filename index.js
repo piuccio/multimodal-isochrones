@@ -24,14 +24,19 @@ function createGraph()/*: GraphInterface */ {
 
 function query(nodes, graphs, fromNode) {
   let maxTime = Infinity;
+  let maxLines = Infinity;
 
   const facade = {
     maxTime(max) {
       maxTime = max;
       return facade;
     },
+    maxLines(max) {
+      maxLines = max;
+      return facade;
+    },
     get: () => {
-      return graphs.get(fromNode, maxTime);
+      return graphs.get(fromNode, maxTime, maxLines);
     }
   };
 

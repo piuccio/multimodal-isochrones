@@ -78,3 +78,16 @@ const nodes = query.maxTime(30).get();
 ```
 
 This will return all nodes reachable in 30 minutes (assuming you count time in minutes) from `node1`.
+
+
+### Max number of line transfers
+
+Limit the results by the total number of lines that can be crossed
+
+```js
+const query = graph.from('node1');
+
+const nodes = query.maxLines(2).get();
+```
+
+This will return all nodes reachable with a maximum of two lines, so the ones on the same line as `node1` and the ones that are directly connected to them.
