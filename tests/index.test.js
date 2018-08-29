@@ -17,6 +17,7 @@ describe('single line', () => {
       ;
     const expected = [
       { node: '1', paths: [{ from: '2', lines: ['l1'], time: 1 }] },
+      { node: '2', paths: [{ from: '2', lines: [], time: 0 }] },
       { node: '3', paths: [{ from: '2', lines: ['l1'], time: 2 }] },
       { node: '4', paths: [{ from: '2', lines: ['l1'], time: 5 }] },
       { node: '5', paths: [{ from: '2', lines: ['l1'], time: 6 }] },
@@ -42,6 +43,7 @@ describe('single line', () => {
       .addEdge({ from: 'b3', to: 'b4', time: 4, line: 'b' })
       ;
     const expected = [
+      { node: 'root', paths: [{ from: 'root', lines: [], time: 0 }] },
       { node: 'a2', paths: [{ from: 'root', lines: ['a'], time: 2 }] },
       { node: 'a3', paths: [{ from: 'root', lines: ['a'], time: 5 }] },
       { node: 'a4', paths: [{ from: 'root', lines: ['a'], time: 7 }] },

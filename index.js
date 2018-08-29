@@ -6,11 +6,11 @@ function createGraph()/*: GraphInterface */ {
   const graphs = graphCreator();
 
   const facade = {
-    addNode: (node) => {
+    addNode(node) {
       nodes.push(node);
       return facade;
     },
-    addEdge: (edge) => {
+    addEdge(edge) {
       if (!nodes.includes(edge.from)) throw new Error(`Missing 'from' node ${edge.from}`);
       if (!nodes.includes(edge.to)) throw new Error(`Missing 'to' node ${edge.to}`);
       graphs.add(edge);

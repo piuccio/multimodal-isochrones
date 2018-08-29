@@ -29,6 +29,7 @@ describe('transfer lines', () => {
       .addEdge({ from: 'c2', to: 'c3', time: 2, line: 'c' })
       ;
     const expected = [
+      { node: 'a1', paths: [{ from: 'a1', lines: [], time: 0 }] },
       { node: 'transfer', paths: [{ from: 'a1', lines: ['a'], time: 3 }] },
       { node: 'a3', paths: [{ from: 'a1', lines: ['a'], time: 5 }] },
       { node: 'a4', paths: [{ from: 'a1', lines: ['a'], time: 7 }] },
@@ -59,6 +60,7 @@ describe('transfer lines', () => {
       .addEdge({ from: 'node2', to: 'node4', time: 6, line: 'fast' })
     ;
     const expected = [
+      { node: 'node1', paths: [{ from: 'node1', lines: [], time: 0 }] },
       { node: 'node2', paths: [{ from: 'node1', lines: ['slow'], time: 4 }] },
       { node: 'node3', paths: [{ from: 'node1', lines: ['slow'], time: 8 }] },
       { node: 'node4', paths: [{ from: 'node1', lines: ['slow', 'fast'], time: 10 }] },

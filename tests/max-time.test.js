@@ -29,6 +29,7 @@ describe('max-time filter', () => {
       .addEdge({ from: 'c2', to: 'c3', time: 2, line: 'c' })
       ;
     const expected = [
+      { node: 'a1', paths: [{ from: 'a1', lines: [], time: 0 }] },
       { node: 'transfer', paths: [{ from: 'a1', lines: ['a'], time: 3 }] },
       { node: 'a3', paths: [{ from: 'a1', lines: ['a'], time: 5 }] },
       { node: 'a4', paths: [{ from: 'a1', lines: ['a'], time: 7 }] },
@@ -42,7 +43,7 @@ describe('max-time filter', () => {
     ];
     const nearby = graph.from('a1').maxTime(5).get();
     const faraway = graph.from('a1').maxTime(10).get();
-    compare(nearby, expected.slice(0, 2));
-    compare(faraway, expected.slice(0, 6));
+    compare(nearby, expected.slice(0, 3));
+    compare(faraway, expected.slice(0, 7));
   });
 });

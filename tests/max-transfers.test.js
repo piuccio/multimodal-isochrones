@@ -32,6 +32,7 @@ describe('max-transfer filter', () => {
       .addEdge({ from: 'fast-b2', to: 'fast-b3', time: 2, line: 'fast-b' })
       ;
     const expected = [
+      { node: 'a1', paths: [{ from: 'a1', lines: [], time: 0 }] },
       { node: 'fast-a2', paths: [{ from: 'a1', lines: ['fast-a'], time: 1 }] },
       { node: 'fast-a3', paths: [{ from: 'a1', lines: ['fast-a'], time: 2 }] },
       { node: 'a2', paths: [{ from: 'a1', lines: ['a'], time: 4 }] },
@@ -49,7 +50,7 @@ describe('max-transfer filter', () => {
     const convenient = graph.from('a1').maxLines(2).get();
     const distant = graph.from('a1').maxLines(3).maxTime(20).get();
     compare(actual, expected);
-    compare(convenient, expected.slice(0, 8));
-    compare(distant, expected.slice(0, 9));
+    compare(convenient, expected.slice(0, 9));
+    compare(distant, expected.slice(0, 10));
   });
 });
