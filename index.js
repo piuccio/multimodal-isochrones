@@ -1,5 +1,6 @@
 //@flow
 const { graphCreator } = require('./lib/graph');
+const intersect = require('./lib/intersect');
 
 function createGraph()/*: GraphInterface */ {
   const nodes = [];
@@ -17,6 +18,7 @@ function createGraph()/*: GraphInterface */ {
       return facade;
     },
     from: (node) => query(nodes, graphs, node),
+    intersect: (...queries) => intersect(queries.map((_) => _.get())),
   };
 
   return facade;

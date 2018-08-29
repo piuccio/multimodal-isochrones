@@ -5,6 +5,7 @@ interface GraphInterface {
 
   // Query
   from(node: string): QueryInterface;
+  intersect(...queries: Array<QueryInterface>): GetterInterface;
 }
 
 interface QueryInterface {
@@ -13,6 +14,10 @@ interface QueryInterface {
   maxLines(count: number): QueryInterface;
 
   // Getters
+  get(): Array<ReachableNode>;
+}
+
+interface GetterInterface {
   get(): Array<ReachableNode>;
 }
 
