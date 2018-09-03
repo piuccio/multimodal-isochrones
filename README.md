@@ -41,6 +41,27 @@ const graph = isochrones()
 You can chain any number of `addNode` and `addEdge`, in any order to build your graph, the only constraint is that when creating an edge both nodes must be already added.
 
 
+You can represent multiple lines and the time it take to transfer between them by calling
+
+```js
+const graph = isochrones()
+  // fist line, going from north to south
+  .addNode('north')
+  .addNode('center')
+  .addNode('south')
+  .addEdge({ from: 'north', to: 'center', line: 'vertical-line', time: 5 })
+  .addEdge({ from: 'south', to: 'center', line: 'vertical-line', time: 5 })
+  // second line, from east to west
+  .addNode('west')
+  .addNode('center') // you can call addNode multiple times, it's not necessary
+  .addNode('east')
+  .addEdge({ from: 'west', to: 'center', line: 'horizontal-line', time: 4 })
+  .addEdge({ from: 'east', to: 'center', line: 'horizontal-line', time: 4 })
+  // it takes some time to change line at the center
+  .addConnection('center', 'vertical-line', 'horizontal-line', 2);
+```
+
+
 ## Query
 
 In order to get a list of nodes you need a query object, that can be constructed calling

@@ -17,6 +17,10 @@ function createGraph()/*: GraphInterface */ {
       graphs.add(edge);
       return facade;
     },
+    addConnection(station, line1, line2, time) {
+      graphs.connection(station, line1, line2, time);
+      return facade;
+    },
     from: (node) => query(nodes, graphs, node),
     intersect: (...queries) => intersect(queries.map((_) => _.get())),
   };
