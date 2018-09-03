@@ -7,7 +7,9 @@
     "lint": "eslint --ignore-path .gitignore --ignore-pattern flow-typed .",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "perf": "node benchmark/performance.js",
+    "perf:watch": "nodemon benchmark/performance.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,8 @@
     "babel-eslint": "^8.2.6",
     "eslint": "^5.4.0",
     "eslint-plugin-flowtype": "^2.50.0",
-    "jest-cli": "^23.5.0"
+    "jest-cli": "^23.5.0",
+    "pretty-ms": "^3.2.0"
   },
   "jest": {
     "testEnvironment": "node"
