@@ -1,6 +1,6 @@
 {
   "name": "multimodal-isochrones",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Compute lines of equal travel times (isochrones) in a multimodal transport graph",
   "main": "index.js",
   "scripts": {
