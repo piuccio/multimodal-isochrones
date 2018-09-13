@@ -5,7 +5,6 @@ const iso = require('../index');
 const { performance } = require('perf_hooks');
 
 const graph = iso();
-json.nodes.forEach((_) => graph.addNode(_));
 json.edges.forEach((_) => graph.addEdge(_));
 
 performance.mark('before');

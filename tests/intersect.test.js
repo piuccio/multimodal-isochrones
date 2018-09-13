@@ -4,20 +4,11 @@ const { compare } = require('./assert');
 describe('intersect nodes', () => {
   it('returns only nodes that are reachable by both origins', () => {
     const graph = iso()
-      .addNode('a1')
-      .addNode('a2')
-      .addNode('connect')
-      .addNode('a4')
-      .addNode('a5')
       .addEdge({ from: 'a1', to: 'a2', time: 4, line: 'a' })
       .addEdge({ from: 'a2', to: 'connect', time: 4, line: 'a' })
       .addEdge({ from: 'connect', to: 'a4', time: 4, line: 'a' })
       .addEdge({ from: 'a4', to: 'a5', time: 4, line: 'a' })
-      .addNode('b1')
-      .addNode('b2')
-      .addNode('connect')
-      .addNode('b4')
-      .addNode('b5')
+
       .addEdge({ from: 'b1', to: 'b2', time: 3, line: 'b' })
       .addEdge({ from: 'b2', to: 'connect', time: 3, line: 'b' })
       .addEdge({ from: 'connect', to: 'b4', time: 3, line: 'b' })

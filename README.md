@@ -33,8 +33,6 @@ const isochrones = require('multimodal-isochrones');
  * that takes 5 minutes to cross
  */
 const graph = isochrones()
-  .addNode('node1')
-  .addNode('node2')
   .addEdge({ from: 'node1', to: 'node2', line: 'line1', time: 5 });
 ```
 
@@ -46,15 +44,9 @@ You can represent multiple lines and the time it take to transfer between them b
 ```js
 const graph = isochrones()
   // fist line, going from north to south
-  .addNode('north')
-  .addNode('center')
-  .addNode('south')
   .addEdge({ from: 'north', to: 'center', line: 'vertical-line', time: 5 })
   .addEdge({ from: 'south', to: 'center', line: 'vertical-line', time: 5 })
   // second line, from east to west
-  .addNode('west')
-  .addNode('center') // you can call addNode multiple times, it's not necessary
-  .addNode('east')
   .addEdge({ from: 'west', to: 'center', line: 'horizontal-line', time: 4 })
   .addEdge({ from: 'east', to: 'center', line: 'horizontal-line', time: 4 })
   // it takes some time to change line at the center

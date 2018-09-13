@@ -4,27 +4,16 @@ const { compare } = require('./assert');
 describe('max-time filter', () => {
   it('returns a subset of the results within the time constraints', () => {
     const graph = iso()
-      .addNode('a1')
-      .addNode('transfer')
-      .addNode('a3')
-      .addNode('a4')
-      .addNode('a5')
       .addEdge({ from: 'a1', to: 'transfer', time: 3, line: 'a' })
       .addEdge({ from: 'transfer', to: 'a3', time: 2, line: 'a' })
       .addEdge({ from: 'a3', to: 'a4', time: 2, line: 'a' })
       .addEdge({ from: 'a4', to: 'a5', time: 3, line: 'a' })
-      .addNode('b1')
-      .addNode('transfer')
-      .addNode('b3')
-      .addNode('second-transfer')
-      .addNode('b5')
+
       .addEdge({ from: 'b1', to: 'transfer', time: 4, line: 'b' })
       .addEdge({ from: 'transfer', to: 'b3', time: 5, line: 'b' })
       .addEdge({ from: 'b3', to: 'second-transfer', time: 4, line: 'b' })
       .addEdge({ from: 'second-transfer', to: 'b5', time: 5, line: 'b' })
-      .addNode('second-transfer')
-      .addNode('c2')
-      .addNode('c3')
+
       .addEdge({ from: 'second-transfer', to: 'c2', time: 1, line: 'c' })
       .addEdge({ from: 'c2', to: 'c3', time: 2, line: 'c' })
       ;

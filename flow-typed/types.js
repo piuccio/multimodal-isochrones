@@ -1,6 +1,5 @@
 interface GraphInterface {
   // Build the graph
-  addNode(node: string): GraphInterface;
   addEdge(edge: Edge): GraphInterface;
   addConnection(node: string, line1: string, line2: string, time: number): GraphInterface;
 

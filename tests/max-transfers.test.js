@@ -4,30 +4,22 @@ const { compare } = require('./assert');
 describe('max-transfer filter', () => {
   it('returns a subset of results within a certain number of line transfers', () => {
     const graph = iso()
-      .addNode('a1')
-      .addNode('a2')
-      .addNode('a3')
       .addEdge({ from: 'a1', to: 'a2', time: 4, line: 'a' })
       .addEdge({ from: 'a2', to: 'a3', time: 4, line: 'a' })
-      .addNode('b2')
-      .addNode('b3')
+
       .addEdge({ from: 'a3', to: 'b2', time: 3, line: 'b' })
       .addEdge({ from: 'b2', to: 'b3', time: 3, line: 'b' })
-      .addNode('c2')
-      .addNode('c3')
+
       .addEdge({ from: 'b3', to: 'c2', time: 5, line: 'c' })
       .addEdge({ from: 'c2', to: 'c3', time: 5, line: 'c' })
-      .addNode('d2')
-      .addNode('d3')
+
       .addEdge({ from: 'c3', to: 'd2', time: 2, line: 'd' })
       .addEdge({ from: 'd2', to: 'd3', time: 2, line: 'd' })
       // also add another line from `a1`, both results should be included
-      .addNode('fast-a2')
-      .addNode('fast-a3')
+
       .addEdge({ from: 'a1', to: 'fast-a2', time: 1, line: 'fast-a' })
       .addEdge({ from: 'fast-a2', to: 'fast-a3', time: 1, line: 'fast-a' })
-      .addNode('fast-b2')
-      .addNode('fast-b3')
+
       .addEdge({ from: 'fast-a3', to: 'fast-b2', time: 2, line: 'fast-b' })
       .addEdge({ from: 'fast-b2', to: 'fast-b3', time: 2, line: 'fast-b' })
       ;

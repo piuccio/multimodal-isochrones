@@ -9,12 +9,8 @@ const MAX_NODES_ON_LINE = 30;
 const MAX_TIME_BETWEEN_NODES = 15;
 
 const json = {
-  nodes: [],
   edges: [],
 };
-for (let i = 0; i < NUMBER_NODES; i += 1) {
-  json.nodes.push(`node_${i}`);
-}
 for (let i = 0; i < NUMBER_LINES; i += 1) {
   const edges = [];
   const nodesCount = Math.floor(2 + Math.random() * MAX_NODES_ON_LINE);
@@ -33,4 +29,4 @@ for (let i = 0; i < NUMBER_LINES; i += 1) {
 }
 
 fs.writeFileSync(path.join(__dirname, './graph.json'), JSON.stringify(json, null, '  '));
-console.log(`Generated a graph with ${json.nodes.length} nodes and ${json.edges.length} edges`);
+console.log(`Generated a graph with ${json.edges.length} edges`);

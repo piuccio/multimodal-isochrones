@@ -4,11 +4,6 @@ const { compare } = require('./assert');
 describe('single line', () => {
   it('computes the travel distance on a single line', () => {
     const graph = iso()
-      .addNode('1')
-      .addNode('2')
-      .addNode('3')
-      .addNode('4')
-      .addNode('5')
       .addEdge({ from: '1', to: '2', time: 1, line: 'l1' })
       .addEdge({ from: '2', to: '3', time: 2, line: 'l1' })
       .addEdge({ from: '3', to: '4', time: 3, line: 'l1' })
@@ -28,16 +23,10 @@ describe('single line', () => {
 
   it('manages nodes with multiple lines on the origin', () => {
     const graph = iso()
-      .addNode('root')
-      .addNode('a2')
-      .addNode('a3')
-      .addNode('a4')
       .addEdge({ from: 'root', to: 'a2', time: 2, line: 'a' })
       .addEdge({ from: 'a2', to: 'a3', time: 3, line: 'a' })
       .addEdge({ from: 'a3', to: 'a4', time: 2, line: 'a' })
-      .addNode('b2')
-      .addNode('b3')
-      .addNode('b4')
+
       .addEdge({ from: 'root', to: 'b2', time: 3, line: 'b' })
       .addEdge({ from: 'b2', to: 'b3', time: 2, line: 'b' })
       .addEdge({ from: 'b3', to: 'b4', time: 4, line: 'b' })
