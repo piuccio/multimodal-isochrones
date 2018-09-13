@@ -1,3 +1,4 @@
 node_modules
 coverage
 benchmark/graph.json
+yarn-error.log
