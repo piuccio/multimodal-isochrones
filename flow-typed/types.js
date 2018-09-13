@@ -22,6 +22,10 @@ interface GetterInterface {
   get(): Array<ReachableNode>;
 }
 
+declare type GraphOptions = {
+  defaultConnectionTime?: number,
+}
+
 declare type Edge = {
   from: string,
   to: string,

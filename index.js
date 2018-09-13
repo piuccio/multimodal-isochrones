@@ -2,7 +2,7 @@
 const { graphCreator } = require('./lib/graph');
 const intersect = require('./lib/intersect');
 
-function createGraph()/*: GraphInterface */ {
+function createGraph(options/*: GraphOptions */ = {})/*: GraphInterface */ {
   const nodes = [];
   const graphs = graphCreator();
 
@@ -21,14 +21,14 @@ function createGraph()/*: GraphInterface */ {
       graphs.connection(station, line1, line2, time);
       return facade;
     },
-    from: (node) => query(nodes, graphs, node),
+    from: (node) => query(nodes, graphs, node, options),
     intersect: (...queries) => intersect(queries.map((_) => _.get())),
   };
 
   return facade;
 }
 
-function query(nodes, graphs, fromNode) {
+function query(nodes, graphs, fromNode, options) {
   let maxTime = Infinity;
   let maxLines = Infinity;
 
@@ -42,7 +42,7 @@ function query(nodes, graphs, fromNode) {
       return facade;
     },
     get: () => {
-      return graphs.get(fromNode, maxTime, maxLines);
+      return graphs.get(fromNode, maxTime, maxLines, options);
     }
   };
 

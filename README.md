@@ -61,6 +61,17 @@ const graph = isochrones()
   .addConnection('center', 'vertical-line', 'horizontal-line', 2);
 ```
 
+### options
+
+The main function `isochrones` accepts an optional `options` object with
+
+```js
+const graph = isochrones({
+  defaultConnectionTime: 4, // Time to transfer line at any node, default 0
+});
+```
+
+
 
 ## Query
 
