@@ -43,3 +43,12 @@ function query(graphs, fromNode, options) {
 }
 
 module.exports = createGraph;
+
+// Utility methods
+createGraph.getTraversedLines = (queryResult = []) => {
+  const linesSet = queryResult.reduce((lines, result) => {
+    result.paths.forEach((path) => path.lines.forEach((_) => lines.add(_)));
+    return lines;
+  }, new Set());
+  return [...linesSet].filter(Boolean);
+};

@@ -115,3 +115,37 @@ const nodes = query.maxLines(2).get();
 ```
 
 This will return all nodes reachable with a maximum of two lines, so the ones on the same line as `node1` and the ones that are directly connected to them.
+
+
+
+## Intersection
+
+A simple query (using `.from`) returns all nodes reachable from a starting node, for more advanced results you can intersect any arbitrary number of queries.
+
+```js
+const intersection = graph.intersect(
+  graph.from('node1').maxTime(10).maxLines(1),
+  graph.from('node2').maxTime(30).maxLines(2),
+  // any number of them
+);
+
+const nodes = intersection.get();
+```
+
+The example query above will return all nodes that are reachable from both `node1` and `node2` with the extra constraints of being within 10 minutes and one line from `node1` and 30 minutes and max two lines from `node2`.
+
+
+
+## Utility methods
+
+```js
+const isochrones = require('multimodal-isochrones');
+const graph = isochrones(); // .addEdge
+
+const lines = isochrones.getTraversedLines(
+  graph.from('node1').get()
+);
+/*
+lines contains all line ids included in the result list
+ */
+```
