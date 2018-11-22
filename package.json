@@ -21,11 +21,11 @@
   "author": "Fabio Crisci",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
-    "eslint": "^5.4.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "jest-cli": "^23.5.0",
-    "pretty-ms": "^3.2.0"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "jest-cli": "^23.6.0",
+    "pretty-ms": "^4.0.0"
   },
   "jest": {
     "testEnvironment": "node"
