@@ -6,6 +6,7 @@ interface GraphInterface {
   // Query
   from(node: string): QueryInterface;
   intersect(...queries: Array<QueryInterface>): GetterInterface;
+  join(...queries: Array<QueryInterface>): GetterInterface;
 }
 
 interface QueryInterface {
@@ -15,6 +16,7 @@ interface QueryInterface {
 
   // Getters
   get(): Array<ReachableNode>;
+  getAsMap(): { [string]: ReachableNode };
 }
 
 interface GetterInterface {

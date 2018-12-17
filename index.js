@@ -1,6 +1,7 @@
 //@flow
 const { graphCreator } = require('./lib/graph');
 const intersect = require('./lib/intersect');
+const join = require('./lib/join');
 
 function createGraph(options/*: GraphOptions */ = {})/*: GraphInterface */ {
   const graphs = graphCreator();
@@ -15,9 +16,11 @@ function createGraph(options/*: GraphOptions */ = {})/*: GraphInterface */ {
       return facade;
     },
     from: (node) => query(graphs, node, options),
-    intersect: (...queries) => intersect(queries.map((_) => _.get())),
+    intersect: (...queries) => intersect(queries.map((_) => _.getAsMap())),
+    join: (...queries) => join(queries.map((_) => _.getAsMap())),
   };
 
+  // $FlowFixMe
   return facade;
 }
 
@@ -34,9 +37,8 @@ function query(graphs, fromNode, options) {
       maxLines = max;
       return facade;
     },
-    get: () => {
-      return graphs.get(fromNode, maxTime, maxLines, options);
-    }
+    getAsMap: () => graphs.get(fromNode, maxTime, maxLines, options),
+    get: () => Object.values(facade.getAsMap()),
   };
 
   return facade;

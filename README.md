@@ -136,6 +136,45 @@ The example query above will return all nodes that are reachable from both `node
 
 
 
+## Join
+
+If you have equivalent starting nodes and you want to get the shortest paths from either of them, you can `join` two queries
+
+```js
+const join = graph.join(
+  graph.from('node1').maxTime(10),
+  graph.from('node2').maxTime(10),
+);
+
+const nodes = join.get();
+```
+
+The example will return all nodes that are reachable from eiter `node1` or `node2` with the desired constraints. Only the shortest path will be included in the results.
+
+
+`join` and `intersect` can be combined
+
+```js
+graph.join(
+  graph.intersect(
+    graph.from('node1').maxTime(10),
+    graph.from('node2').maxTime(10),
+  ),
+  graph.from('node3').maxTime(10),
+).get();
+
+// or
+
+graph.intersect(
+  graph.join(
+    graph.from('node1').maxTime(10),
+    graph.from('node2').maxTime(10),
+  ),
+  graph.from('node3').maxTime(10),
+).get();
+```
+
+
 ## Utility methods
 
 ```js
