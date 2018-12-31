@@ -27,6 +27,7 @@ function createGraph(options/*: GraphOptions */ = {})/*: GraphInterface */ {
 function query(graphs, fromNode, options) {
   let maxTime = Infinity;
   let maxLines = Infinity;
+  let pathData = {};
 
   const facade = {
     maxTime(max) {
@@ -37,7 +38,11 @@ function query(graphs, fromNode, options) {
       maxLines = max;
       return facade;
     },
-    getAsMap: () => graphs.get(fromNode, maxTime, maxLines, options),
+    pathData: (extra) => {
+      pathData = extra;
+      return facade;
+    },
+    getAsMap: () => graphs.get(fromNode, maxTime, maxLines, pathData, options),
     get: () => Object.values(facade.getAsMap()),
   };
 

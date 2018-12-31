@@ -14,6 +14,9 @@ interface QueryInterface {
   maxTime(time: number): QueryInterface;
   maxLines(count: number): QueryInterface;
 
+  // modify output
+  pathData(extra: Object): QueryInterface;
+
   // Getters
   get(): Array<ReachableNode>;
   getAsMap(): { [string]: ReachableNode };

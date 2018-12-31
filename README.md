@@ -188,3 +188,19 @@ const lines = isochrones.getTraversedLines(
 lines contains all line ids included in the result list
  */
 ```
+
+### Additional data on the paths object
+
+It's possible to assign any additional data to the result paths calling `pathData` on the query object.
+
+```js
+const node = graph.join(
+  graph.from('node1').pathData({ cost: 100 }),
+  graph.from('node2').pathData({ cost: 200 }),
+);
+/*
+nodes = [
+  { node: 'node3', paths: [{ from: 'node1', cost: 100, ... }]},
+  ...
+]
+ */
